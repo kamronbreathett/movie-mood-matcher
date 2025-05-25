@@ -41,14 +41,6 @@ def call_AI(prompt):
 
     #We have responses but we need to call the API to retrieve movies from TMDb
 
-
-
-def movie_responses(prompt):
-    #Change body html & get AI response & AI has to call API function
-    call_AI(prompt)
-
-    #We have responses but 
-
 def get_Movie(query):
     words = query
     url = f"https://api.themoviedb.org/3/search/movie?query={words}&include_adult=false&language=en-US&page=1"

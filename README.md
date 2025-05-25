@@ -36,3 +36,18 @@ Found Ollama not running with assistant role
 Need to fix Ollama assistant not running now we need to change results when the user enters a new mood
 bar not updating when user puts a new search input 
 Final Fix
+
+
+Problems Encountered & Fixes:
+
+First Problem:
+Ollama Model Selection
+
+First Solution:
+Some Ollama models don't support prompt roles such as system or assistant. There are also some model that also don't support tool usage. The Ollama 3.1:8b model supports both so that's why its being used.
+
+Second Problem:
+System Prompt Usage
+
+Second Solution:
+The System Prompt MUST declare the models usage as a movie recommender that CREATES a query based on the movie that is a MOVIE, and it must reinforce that it has to use the tool.
