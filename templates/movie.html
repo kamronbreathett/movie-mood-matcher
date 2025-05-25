@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link href="{{ url_for('static', filename= 'styles/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <div class = "border">
+        <header>
+            <h1>Movie Mood Matcher</h1>
+            <h3>Return a word in the box and we'll find a movie that closely matches</h3>
+        </header>
+        <form action="/movie" method="get">
+            <input type="text" id="bar" name="bar" autocomplete="off">
+        </form>
+        </div>
+    <div name = "results" id = "results">
+        <p id = "text" class = "results">{{ results }}</p>
+    </div>
+
+    <script>
+    document.getElementById("bar").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        console.log("Search triggered!"); // Debugging step
+
+        setTimeout(() => { 
+            let txtElement = document.getElementById("text");
+            let txt = txtElement.textContent.trim(); 
+            console.log("Retrieved text:", txt); // Debugging step
+            
+            if (!txt) { 
+                console.log("Text not found!"); 
+                return; 
+            }
+
+            txtElement.innerHTML = ""; // Clear existing text
+            let i = 0;
+
+            function typeWriter() {
+                if (i < txt.length) {
+                    txtElement.innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 75);
+                }
+            }
+
+            typeWriter();
+            }, 500);
+        }
+    });
+
+    </script>
+</body>
+</html>
